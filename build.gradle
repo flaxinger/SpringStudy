@@ -1,0 +1,42 @@
+buildscript{
+    ext{
+        springBootVersion = '2.1.7.RELEASE'
+    }
+    repositories {
+        // 라이브러리를 받을 레포지토리
+        mavenCentral()
+    }
+    dependencies{
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.flaxinger.SpringStudy'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://stackoverflow.com/questions/23796404/could-not-find-method-compile-for-arguments-gradle
+    // compile()은 deprecated되었다.
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.projectlombok:lombok:1.18.22')
+    // testCompile()은 deprecated되었다.
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    //추가
+    testImplementation('org.projectlombok:lombok:1.18.22')
+    annotationProcessor('org.projectlombok:lombok:1.18.22')
+    testAnnotationProcessor('org.projectlombok:lombok:1.18.22')
+}
+//test{
+//    useJUnitPlatform()
+//}
